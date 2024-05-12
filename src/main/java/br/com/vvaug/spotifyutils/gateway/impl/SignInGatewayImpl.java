@@ -13,6 +13,6 @@ public class SignInGatewayImpl implements SignInGateway {
     private final GetAccessTokenClient getAccessTokenClient;
     @Override
     public SignInResponse execute(String secretId, String clientId, String grant_type) {
-        return getAccessTokenClient.getAccesssToken(clientId, secretId, grant_type);
+        return getAccessTokenClient.getAccessToken(clientId, secretId, grant_type);
     }
 }
