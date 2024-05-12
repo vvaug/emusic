@@ -17,14 +17,14 @@ import java.util.List;
 public interface SpotifyArtistClient {
 
     @GetMapping("/{id}")
-    public ArtistResponse getArtist(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+    ArtistResponse getArtist(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 
     @GetMapping
-    public SeveralArtistsResponse getArtists(@RequestParam("ids") String ids, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+    SeveralArtistsResponse getArtists(@RequestParam("ids") String ids, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 
     @GetMapping("/{id}/albums")
-    public AlbumResponse getAlbums(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+    AlbumResponse getAlbums(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 
     @GetMapping("/{id}/top-tracks")
-    public ArtistTopTracksResponse getArtistTopTracks(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+    ArtistTopTracksResponse getArtistTopTracks(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 }
