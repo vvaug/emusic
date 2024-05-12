@@ -1,8 +1,8 @@
 package br.com.vvaug.spotifyutils.usecase;
 
-import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.ArtistAlbumResponse;
 
 public interface GetArtistAlbumUseCase {
 
-    AlbumResponse execute(String id, String authorization);
+    ArtistAlbumResponse execute(String id, String authorization);
 }

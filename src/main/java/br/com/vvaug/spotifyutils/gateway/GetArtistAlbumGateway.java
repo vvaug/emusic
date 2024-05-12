@@ -1,8 +1,8 @@
 package br.com.vvaug.spotifyutils.gateway;
 
-import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.ArtistAlbumResponse;
 
 public interface GetArtistAlbumGateway {
 
-    AlbumResponse getArtistAlbum(String id, String authorization);
+    ArtistAlbumResponse getArtistAlbum(String id, String authorization);
 }

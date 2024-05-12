@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 
 @FeignClient(name = "spotify-get-access-token-client", url = "${feign.spotify.access-token.url}")
-public interface GetAccessTokenClient {
+public interface SpotifyAccessTokenClient {
 
      @PostMapping(consumes = APPLICATION_FORM_URLENCODED_VALUE)
      SignInResponse getAccessToken(@RequestParam("client_id") String clientId,
