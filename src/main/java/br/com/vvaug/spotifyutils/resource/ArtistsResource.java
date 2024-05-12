@@ -26,7 +26,7 @@ public class ArtistsResource {
     }
 
     @GetMapping("/{id}/albums")
-    public AlbumResponse getAlbums(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
+    public ArtistAlbumResponse getAlbums(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
         return getArtistAlbumUseCase.execute(id, authorization);
     }
 
