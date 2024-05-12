@@ -4,5 +4,5 @@ import br.com.vvaug.spotifyutils.response.SignInResponse;
 
 public interface SignInUseCase {
 
-    public SignInResponse execute();
+    SignInResponse execute();
 }

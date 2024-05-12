@@ -1,13 +1,10 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
 import br.com.vvaug.spotifyutils.gateway.GetSeveralArtistsGateway;
-import br.com.vvaug.spotifyutils.response.ArtistResponse;
 import br.com.vvaug.spotifyutils.response.SeveralArtistsResponse;
 import br.com.vvaug.spotifyutils.usecase.GetSeveralArtistsUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

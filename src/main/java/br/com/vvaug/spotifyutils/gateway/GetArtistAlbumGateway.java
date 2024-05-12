@@ -4,5 +4,5 @@ import br.com.vvaug.spotifyutils.response.AlbumResponse;
 
 public interface GetArtistAlbumGateway {
 
-    public AlbumResponse getArtistAlbum(String id, String authorization);
+    AlbumResponse getArtistAlbum(String id, String authorization);
 }

@@ -12,7 +12,7 @@ import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VAL
 public interface GetAccessTokenClient {
 
      @PostMapping(consumes = APPLICATION_FORM_URLENCODED_VALUE)
-     public SignInResponse getAccesssToken(@RequestParam("client_id") String clientId,
-                                           @RequestParam("client_secret") String secretId,
-                                           @RequestParam("grant_type") String grantType);
+     SignInResponse getAccessToken(@RequestParam("client_id") String clientId,
+                                    @RequestParam("client_secret") String secretId,
+                                    @RequestParam("grant_type") String grantType);
 }

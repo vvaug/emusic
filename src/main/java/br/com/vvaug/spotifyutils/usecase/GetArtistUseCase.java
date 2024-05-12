@@ -4,5 +4,5 @@ import br.com.vvaug.spotifyutils.response.ArtistResponse;
 
 public interface GetArtistUseCase {
 
-    public ArtistResponse execute (String id, String authorization);
+    ArtistResponse execute(String id, String authorization);
 }

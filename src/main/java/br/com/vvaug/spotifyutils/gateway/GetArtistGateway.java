@@ -4,5 +4,5 @@ import br.com.vvaug.spotifyutils.response.ArtistResponse;
 
 public interface GetArtistGateway {
 
-    public ArtistResponse getArtist (String id, String authorization);
+    ArtistResponse getArtist(String id, String authorization);
 }
