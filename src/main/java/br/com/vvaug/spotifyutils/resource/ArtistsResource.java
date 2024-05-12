@@ -2,8 +2,10 @@ package br.com.vvaug.spotifyutils.resource;
 
 import br.com.vvaug.spotifyutils.response.AlbumResponse;
 import br.com.vvaug.spotifyutils.response.ArtistResponse;
+import br.com.vvaug.spotifyutils.response.ArtistTopTracksResponse;
 import br.com.vvaug.spotifyutils.response.SeveralArtistsResponse;
 import br.com.vvaug.spotifyutils.usecase.GetArtistAlbumUseCase;
+import br.com.vvaug.spotifyutils.usecase.GetArtistTopTracksUseCase;
 import br.com.vvaug.spotifyutils.usecase.GetArtistUseCase;
 import br.com.vvaug.spotifyutils.usecase.GetSeveralArtistsUseCase;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class ArtistsResource {
     private final GetArtistUseCase getArtistUseCase;
     private final GetSeveralArtistsUseCase getSeveralArtistsUseCase;
     private final GetArtistAlbumUseCase getArtistAlbumUseCase;
+    private final GetArtistTopTracksUseCase getArtistTopTracksUseCase;
     @GetMapping("/{id}")
     public ArtistResponse getArtist(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
         return getArtistUseCase.execute(id, authorization);
@@ -33,4 +36,10 @@ public class ArtistsResource {
     public AlbumResponse getAlbums(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
         return getArtistAlbumUseCase.execute(id, authorization);
     }
+
+    @GetMapping("/{id}/top-tracks")
+    public ArtistTopTracksResponse getArtistTopTracks(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
+        return getArtistTopTracksUseCase.execute(id, authorization);
+    }
+
 }
