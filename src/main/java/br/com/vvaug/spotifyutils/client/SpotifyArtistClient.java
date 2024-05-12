@@ -1,9 +1,6 @@
 package br.com.vvaug.spotifyutils.client;
 
-import br.com.vvaug.spotifyutils.response.AlbumResponse;
-import br.com.vvaug.spotifyutils.response.ArtistResponse;
-import br.com.vvaug.spotifyutils.response.ArtistTopTracksResponse;
-import br.com.vvaug.spotifyutils.response.SeveralArtistsResponse;
+import br.com.vvaug.spotifyutils.response.*;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,4 +24,7 @@ public interface SpotifyArtistClient {
 
     @GetMapping("/{id}/top-tracks")
     ArtistTopTracksResponse getArtistTopTracks(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+
+    @GetMapping("/{id}/related-artists")
+    RelatedArtistsResponse getRelatedArtists(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 }
