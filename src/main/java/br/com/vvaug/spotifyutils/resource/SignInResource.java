@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SignInResource {
 
+    /*
+    TODO this endpoint will be transformed in a microservice.
+     */
     private final SignInUseCase signInUseCase;
     @PostMapping
     public SignInResponse login() {
