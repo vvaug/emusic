@@ -1,11 +1,10 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
-import org.springframework.stereotype.Service;
-
 import br.com.vvaug.spotifyutils.gateway.GetSeveralEpisodesGateway;
 import br.com.vvaug.spotifyutils.response.SeveralEpisodesResponse;
 import br.com.vvaug.spotifyutils.usecase.GetSeveralEpisodesUseCase;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

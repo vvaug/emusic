@@ -18,6 +18,7 @@ public class AlbumsResource {
     private final GetAlbumUseCase getAlbumUseCase;
     private final GetSeveralAlbumsUseCase getSeveralAlbumsUseCase;
     private final GetAlbumTracksUseCase getAlbumTracksUseCase;
+    
     @GetMapping("/{id}")
     public AlbumResponse getAlbum(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization){
         return getAlbumUseCase.execute(id, authorization);

@@ -1,6 +1,8 @@
 package br.com.vvaug.spotifyutils.client;
 
-import br.com.vvaug.spotifyutils.response.*;
+import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.AlbumTracksResponse;
+import br.com.vvaug.spotifyutils.response.SeveralAlbumsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
