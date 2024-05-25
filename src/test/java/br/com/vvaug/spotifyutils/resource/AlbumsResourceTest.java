@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.AlbumResponse;
 import br.com.vvaug.spotifyutils.response.AlbumTracksResponse;
 import br.com.vvaug.spotifyutils.response.SeveralAlbumsResponse;
@@ -37,8 +38,7 @@ class AlbumsResourceTest {
 
     @Test
     void getAlbumTest() throws Exception {
-        //TODO object data
-        AlbumResponse albumResponse = AlbumResponse.builder().build();
+        AlbumResponse albumResponse = ResponseBuilder.buildAlbumResponse();
         when(getAlbumUseCase.execute(anyString(), anyString())).thenReturn(albumResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/albums/49Wb8WyRUtoyKKO01HkRzI")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -48,8 +48,7 @@ class AlbumsResourceTest {
 
     @Test
     void getSeveralAlbumsTest() throws Exception {
-        //TODO
-        SeveralAlbumsResponse severalAlbumResponse = SeveralAlbumsResponse.builder().build();
+        SeveralAlbumsResponse severalAlbumResponse = ResponseBuilder.buildSeveralAlbumsResponse();
         when(getSeveralAlbumsUseCase.execute(anyString(), anyString())).thenReturn(severalAlbumResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/albums")
                         .queryParam("ids", "49Wb8WyRUtoyKKO01HkRzI")
@@ -60,7 +59,7 @@ class AlbumsResourceTest {
 
     @Test
     void getAlbumTracksTest() throws Exception {
-        AlbumTracksResponse albumTracksResponse = AlbumTracksResponse.builder().build();
+        AlbumTracksResponse albumTracksResponse = ResponseBuilder.buildAlbumTracksResponse();
         when(getAlbumTracksUseCase.execute(anyString(), anyString())).thenReturn(albumTracksResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/albums/49Wb8WyRUtoyKKO01HkRzI/tracks")
                 .contentType(MediaType.APPLICATION_JSON)
