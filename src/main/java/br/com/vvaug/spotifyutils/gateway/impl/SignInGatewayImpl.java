@@ -12,7 +12,7 @@ public class SignInGatewayImpl implements SignInGateway {
 
     private final SpotifyAccessTokenClient spotifyAccessTokenClient;
     @Override
-    public SignInResponse execute(String secretId, String clientId, String grant_type) {
-        return spotifyAccessTokenClient.getAccessToken(clientId, secretId, grant_type);
+    public SignInResponse execute(String secretId, String clientId, String grantType) {
+        return spotifyAccessTokenClient.getAccessToken(clientId, secretId, grantType);
     }
 }

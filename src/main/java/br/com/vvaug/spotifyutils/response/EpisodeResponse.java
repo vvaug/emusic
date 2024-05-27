@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.response;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,26 +12,34 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Data
 @Builder
-
 public class EpisodeResponse {
-	
-	private String audio_preview_url;
+
+	@JsonAlias("audio_preview_url")
+	private String audioPreviewUrl;
 	private String description;
-	private String html_description;
-	private int duration_ms;
+	@JsonAlias("html_description")
+	private String htmlDescription;
+	@JsonAlias("duration_ms")
+	private int durationMs;
 	private boolean explicit;
-	private ExternalUrlsResponse external_urls;
+	@JsonAlias("external_urls")
+	private ExternalUrlsResponse externalUrls;
 	private String href;
 	private String id;
 	private ArrayList<ImageResponse> images;
-	private boolean is_externally_hosted;
-	private boolean is_playable;
+	@JsonAlias("is_externally_hosted")
+	private boolean isExternallyHosted;
+	@JsonAlias("is_playable")
+	private boolean isPlayable;
 	private String language;
 	private ArrayList<String> languages;
 	private String name;
-	private String release_date;
-    private String release_date_precision;
-    private EpisodeResumePointResponse resume_point;
+	@JsonAlias("release_date")
+	private String releaseDate;
+	@JsonAlias("release_date_precision")
+    private String releaseDatePrecision;
+	@JsonAlias("resume_point")
+    private EpisodeResumePointResponse resumePoint;
     private String type;
     private String uri;
     private EpisodeComplementsResponse episodeComplementsResponse;

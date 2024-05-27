@@ -9,6 +9,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.IOException;
+
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +18,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)      //anotação importante, importa algumas extensões do JUnit5
-public class GetArtistUseCaseImplTest {
+class GetArtistUseCaseImplTest {
 
     //sempre injetar as Impl e testar as Impl
     @InjectMocks
@@ -31,7 +33,7 @@ public class GetArtistUseCaseImplTest {
         Quando o método getArtist for executado com qualquer String no primeiro parâmetro e qualquer String no segundo parâmetro, devolva o objeto armazenado em expected.
      */
     @Test
-    public void execute (){
+    public void execute () throws IOException {
         ArtistResponse expected = ResponseBuilder.buildArtistResponse(); //objeto esperado quando o gateway for executado
         when(getArtistGateway.getArtist(anyString(), anyString())).thenReturn(expected); //quando gateway for executado, retorne o objeto criado na linha acima
         ArtistResponse response = getArtistUseCase.execute(ID, AUTHORIZATION); // aqui o UseCase é executado. O fluxo é o UseCase chamar o Gateway. Como Mockamos o Gateway acima para devolver um objeto vazio, o "expected" é ele que será devolvido, pois o Gateway está mockado o when significa (Quando o gateway.metodoX for executado Devolva um Objeto Mockado, no caso o expected)

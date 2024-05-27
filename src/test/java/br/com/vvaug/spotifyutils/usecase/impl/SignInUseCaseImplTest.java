@@ -22,7 +22,7 @@ class SignInUseCaseImplTest {
 
     @Test
     void executeTest() {
-        SignInResponse expected = SignInResponse.builder().access_token(AUTHORIZATION).build();
+        SignInResponse expected = SignInResponse.builder().accessToken(AUTHORIZATION).build();
         when(signInUseCase.execute()).thenReturn(expected);
         SignInResponse response = signInUseCase.execute();
         verify(signInGateway, atLeastOnce()).execute(any(), any(), any());

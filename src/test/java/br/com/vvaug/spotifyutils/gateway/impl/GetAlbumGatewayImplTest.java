@@ -26,7 +26,7 @@ class GetAlbumGatewayImplTest {
     private SpotifyAlbumClient spotifyAlbumClient;
 
     @Test
-    public void getAlbumTest() {
+    void getAlbumTest() throws IOException {
         AlbumResponse expected = ResponseBuilder.buildAlbumResponse();
         when(spotifyAlbumClient.getAlbum(any(), any())).thenReturn(expected);
         AlbumResponse response = getAlbumGateway.getAlbum(ID, AUTHORIZATION);

@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ArtistsResourceTest {
+ class ArtistsResourceTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
@@ -39,7 +39,7 @@ public class ArtistsResourceTest {
     private GetRelatedArtistsUseCase getRelatedArtistsUseCase;
 
     @Test
-    public void getArtistTest() throws Exception {
+     void getArtistTest() throws Exception {
         ArtistResponse response = ResponseBuilder.buildArtistResponse();
         when(getArtistUseCase.execute(anyString(), anyString())).thenReturn(response);
         mockMvc.perform(get("/artists/123")
@@ -49,7 +49,7 @@ public class ArtistsResourceTest {
     }
 
     @Test
-    public void getArtistsTest() throws Exception {
+     void getArtistsTest() throws Exception {
         SeveralArtistsResponse severalArtistsResponse = ResponseBuilder.buildArtistsResponse();
         when(getSeveralArtistsUseCase.execute(anyString(), anyString())).thenReturn(severalArtistsResponse);
         mockMvc.perform(get("/artists")
@@ -60,7 +60,7 @@ public class ArtistsResourceTest {
     }
 
     @Test
-    public void getAlbumsTest() throws Exception {
+     void getAlbumsTest() throws Exception {
         ArtistAlbumResponse albumResponse = ResponseBuilder.buildArtistsAlbumResponse();
         when(getArtistAlbumUseCase.execute(anyString(), anyString())).thenReturn(albumResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/albums")
@@ -70,7 +70,7 @@ public class ArtistsResourceTest {
     }
 
     @Test
-    public void getTopTracksTest() throws Exception {
+     void getTopTracksTest() throws Exception {
         ArtistTopTracksResponse artistTopTracksResponse = ResponseBuilder.buildArtistsTopTracksResponse();
         when(getArtistTopTracksUseCase.execute(anyString(), anyString())).thenReturn(artistTopTracksResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/top-tracks")
@@ -80,7 +80,7 @@ public class ArtistsResourceTest {
     }
 
     @Test
-    public void getRelatedArtistsTest() throws Exception {
+     void getRelatedArtistsTest() throws Exception {
         RelatedArtistsResponse relatedArtistsResponse = ResponseBuilder.buildArtistsRelated();
         when(getRelatedArtistsUseCase.execute(anyString(), anyString())).thenReturn(relatedArtistsResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/related-artists")
