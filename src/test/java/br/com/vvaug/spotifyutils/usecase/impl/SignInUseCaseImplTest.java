@@ -22,7 +22,6 @@ class SignInUseCaseImplTest {
 
     @Test
     void executeTest() {
-        //TODO object data
         SignInResponse expected = SignInResponse.builder().access_token(AUTHORIZATION).build();
         when(signInUseCase.execute()).thenReturn(expected);
         SignInResponse response = signInUseCase.execute();

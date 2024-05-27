@@ -9,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
-
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,7 +24,7 @@ class GetSingleCategoryUseCaseImplTest {
     private GetSingleCategoryGatewayImpl getSingleCategoryGateway;
 
     @Test
-    void executeTest() throws IOException {
+    void executeTest(){
         CategoriesItemResponse expected = ResponseBuilder.buildSingleCategory();
         when(getSingleCategoryUseCase.execute(anyString(), anyString())).thenReturn(expected);
         CategoriesItemResponse response = getSingleCategoryUseCase.execute(ID, AUTHORIZATION);

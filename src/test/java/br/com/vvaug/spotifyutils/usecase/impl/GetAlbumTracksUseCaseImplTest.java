@@ -10,8 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.FileNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
@@ -25,7 +23,7 @@ class GetAlbumTracksUseCaseImplTest {
     private GetAlbumTracksGatewayImpl getAlbumTracksGateway;
 
     @Test
-    void executeTest() throws FileNotFoundException {
+    void executeTest(){
         AlbumTracksResponse expected = ResponseBuilder.buildAlbumTracksResponse();
         when(getAlbumTracksGateway.getAlbumTracks(anyString(),anyString())).thenReturn(expected);
         AlbumTracksResponse response = getAlbumTracksUseCase.execute(TestUtils.ID, TestUtils.AUTHORIZATION);
