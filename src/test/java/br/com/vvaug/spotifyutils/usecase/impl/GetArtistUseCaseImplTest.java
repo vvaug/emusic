@@ -1,12 +1,15 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
 import br.com.vvaug.spotifyutils.gateway.impl.GetArtistGatewayImpl;
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.ArtistResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.io.IOException;
 
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
@@ -30,8 +33,8 @@ public class GetArtistUseCaseImplTest {
         Quando o método getArtist for executado com qualquer String no primeiro parâmetro e qualquer String no segundo parâmetro, devolva o objeto armazenado em expected.
      */
     @Test
-    public void execute (){
-        ArtistResponse expected = ArtistResponse.builder().build(); //objeto esperado quando o gateway for executado
+    public void execute () throws IOException {
+        ArtistResponse expected = ResponseBuilder.buildArtistResponse(); //objeto esperado quando o gateway for executado
         when(getArtistGateway.getArtist(anyString(), anyString())).thenReturn(expected); //quando gateway for executado, retorne o objeto criado na linha acima
         ArtistResponse response = getArtistUseCase.execute(ID, AUTHORIZATION); // aqui o UseCase é executado. O fluxo é o UseCase chamar o Gateway. Como Mockamos o Gateway acima para devolver um objeto vazio, o "expected" é ele que será devolvido, pois o Gateway está mockado o when significa (Quando o gateway.metodoX for executado Devolva um Objeto Mockado, no caso o expected)
         verify(getArtistGateway, atLeastOnce()).getArtist(anyString(), anyString()); //esse verify usamos para verificar se o nosso Mock (Gateway) foi realmente sensibilizado | Sintaxe: verify (mock, verificacao).metodo(parametro)  O que usamos aqui foi:  Verifique se o mock getArtistGateway executou PELO MENOS UMA VEZ (AT LEAST ONCE) o método getArtist com qualquer String no primeiro e no segundo parâmetro.

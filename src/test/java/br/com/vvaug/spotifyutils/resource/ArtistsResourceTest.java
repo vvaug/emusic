@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.*;
 import br.com.vvaug.spotifyutils.usecase.*;
 import org.junit.jupiter.api.Test;
@@ -39,8 +40,7 @@ public class ArtistsResourceTest {
 
     @Test
     public void getArtistTest() throws Exception {
-        //TODO dar valores ao objeto
-        ArtistResponse response = ArtistResponse.builder().build();
+        ArtistResponse response = ResponseBuilder.buildArtistResponse();
         when(getArtistUseCase.execute(anyString(), anyString())).thenReturn(response);
         mockMvc.perform(get("/artists/123")
                         .header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
@@ -50,8 +50,7 @@ public class ArtistsResourceTest {
 
     @Test
     public void getArtistsTest() throws Exception {
-        //TODO
-        SeveralArtistsResponse severalArtistsResponse = SeveralArtistsResponse.builder().build();
+        SeveralArtistsResponse severalArtistsResponse = ResponseBuilder.buildArtistsResponse();
         when(getSeveralArtistsUseCase.execute(anyString(), anyString())).thenReturn(severalArtistsResponse);
         mockMvc.perform(get("/artists")
                         .queryParam("ids", "49Wb8WyRUtoyKKO01HkRzI")
@@ -62,8 +61,7 @@ public class ArtistsResourceTest {
 
     @Test
     public void getAlbumsTest() throws Exception {
-        //TODO
-        ArtistAlbumResponse albumResponse = ArtistAlbumResponse.builder().build();
+        ArtistAlbumResponse albumResponse = ResponseBuilder.buildArtistsAlbumResponse();
         when(getArtistAlbumUseCase.execute(anyString(), anyString())).thenReturn(albumResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/albums")
                         .header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
@@ -73,8 +71,7 @@ public class ArtistsResourceTest {
 
     @Test
     public void getTopTracksTest() throws Exception {
-        //TODO
-        ArtistTopTracksResponse artistTopTracksResponse = ArtistTopTracksResponse.builder().build();
+        ArtistTopTracksResponse artistTopTracksResponse = ResponseBuilder.buildArtistsTopTracksResponse();
         when(getArtistTopTracksUseCase.execute(anyString(), anyString())).thenReturn(artistTopTracksResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/top-tracks")
                         .header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)
@@ -84,8 +81,7 @@ public class ArtistsResourceTest {
 
     @Test
     public void getRelatedArtistsTest() throws Exception {
-        //TODO
-        RelatedArtistsResponse relatedArtistsResponse = RelatedArtistsResponse.builder().build();
+        RelatedArtistsResponse relatedArtistsResponse = ResponseBuilder.buildArtistsRelated();
         when(getRelatedArtistsUseCase.execute(anyString(), anyString())).thenReturn(relatedArtistsResponse);
         mockMvc.perform(get("/artists/49Wb8WyRUtoyKKO01HkRzI/related-artists")
                         .header(HttpHeaders.AUTHORIZATION, AUTHORIZATION)

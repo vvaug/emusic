@@ -52,6 +52,13 @@
 			<artifactId>gson</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<!-- Plugin do SonarQube -->
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.11.0.3922</version>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

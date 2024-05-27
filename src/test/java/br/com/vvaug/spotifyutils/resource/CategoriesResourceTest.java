@@ -1,5 +1,7 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
+import br.com.vvaug.spotifyutils.response.CategoriesItemResponse;
 import br.com.vvaug.spotifyutils.response.SeveralCategoriesResponse;
 import br.com.vvaug.spotifyutils.usecase.GetSeveralCategoriesUseCase;
 import br.com.vvaug.spotifyutils.usecase.GetSingleCategoryUseCase;
@@ -32,8 +34,7 @@ class CategoriesResourceTest {
 
     @Test
     void getCategoriesTest() throws Exception {
-        //TODO object data;
-        SeveralCategoriesResponse severalCategoriesResponse = SeveralCategoriesResponse.builder().build();
+        SeveralCategoriesResponse severalCategoriesResponse = ResponseBuilder.buildSeveralCategories();
         when(getSeveralCategoriesUseCase.execute(anyString())).thenReturn(severalCategoriesResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/browse/categories")
                 .header(HttpHeaders.AUTHORIZATION, TestUtils.AUTHORIZATION)
@@ -43,9 +44,8 @@ class CategoriesResourceTest {
 
     @Test
     void getSingleCategoryTest() throws Exception {
-        //TODO
-        SeveralCategoriesResponse severalCategoriesResponse = SeveralCategoriesResponse.builder().build();
-        when(getSeveralCategoriesUseCase.execute(anyString())).thenReturn(severalCategoriesResponse);
+        CategoriesItemResponse categoriesItemResponse = ResponseBuilder.buildSingleCategory();
+        when(getSingleCategoryUseCase.execute(anyString(),anyString())).thenReturn(categoriesItemResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/browse/categories/dinner")
                         .header(HttpHeaders.AUTHORIZATION, TestUtils.AUTHORIZATION)
                         .contentType(MediaType.APPLICATION_JSON))

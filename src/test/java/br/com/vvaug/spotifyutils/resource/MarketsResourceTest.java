@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.MarketsResponse;
 import br.com.vvaug.spotifyutils.usecase.GetMarketsUseCase;
 import br.com.vvaug.spotifyutils.utils.TestUtils;
@@ -29,7 +30,7 @@ class MarketsResourceTest {
 
     @Test
     void getMarketsTest() throws Exception {
-        MarketsResponse marketsResponse = MarketsResponse.builder().build();
+        MarketsResponse marketsResponse = ResponseBuilder.buildMarketsResponse();
         when(getMarketsUseCase.execute(anyString())).thenReturn(marketsResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/markets")
                         .header(HttpHeaders.AUTHORIZATION, TestUtils.AUTHORIZATION)

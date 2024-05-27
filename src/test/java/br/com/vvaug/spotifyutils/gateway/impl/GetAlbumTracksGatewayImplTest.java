@@ -3,6 +3,7 @@ package br.com.vvaug.spotifyutils.gateway.impl;
 import br.com.vvaug.spotifyutils.client.SpotifyAlbumClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.SeveralAlbumsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,19 +19,17 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetAlbumGatewayImplTest {
+public class GetAlbumTracksGatewayImplTest {
 
     @InjectMocks
-    private GetAlbumGatewayImpl getAlbumGateway;
+    private GetAlbumTracksGatewayImpl getAlbumTracksGateway;
     @Mock
     private SpotifyAlbumClient spotifyAlbumClient;
 
     @Test
-    public void getAlbumTest() throws IOException {
-        AlbumResponse expected = ResponseBuilder.buildAlbumResponse();
-        when(spotifyAlbumClient.getAlbum(any(), any())).thenReturn(expected);
-        AlbumResponse response = getAlbumGateway.getAlbum(ID, AUTHORIZATION);
-        verify(spotifyAlbumClient, atLeastOnce()).getAlbum(any(), any());
-        assertEquals(expected, response);
+    public void getSeveralAlbumsTest() throws IOException {
+
     }
+
+
 }

@@ -1,6 +1,7 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
 import br.com.vvaug.spotifyutils.gateway.impl.GetAlbumTracksGatewayImpl;
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.AlbumTracksResponse;
 import br.com.vvaug.spotifyutils.utils.TestUtils;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -22,9 +25,8 @@ class GetAlbumTracksUseCaseImplTest {
     private GetAlbumTracksGatewayImpl getAlbumTracksGateway;
 
     @Test
-    void executeTest() {
-        //TODO object data
-        AlbumTracksResponse expected = AlbumTracksResponse.builder().build();
+    void executeTest() throws FileNotFoundException {
+        AlbumTracksResponse expected = ResponseBuilder.buildAlbumTracksResponse();
         when(getAlbumTracksGateway.getAlbumTracks(anyString(),anyString())).thenReturn(expected);
         AlbumTracksResponse response = getAlbumTracksUseCase.execute(TestUtils.ID, TestUtils.AUTHORIZATION);
         verify(getAlbumTracksGateway, atLeastOnce()).getAlbumTracks(anyString(), anyString());

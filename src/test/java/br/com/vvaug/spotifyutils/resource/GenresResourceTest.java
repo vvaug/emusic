@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.GenresResponse;
 import br.com.vvaug.spotifyutils.usecase.GetGenresUseCase;
 import br.com.vvaug.spotifyutils.utils.TestUtils;
@@ -29,7 +30,7 @@ class GenresResourceTest {
 
     @Test
     void getGenreTest() throws Exception {
-        GenresResponse genresResponse = GenresResponse.builder().build();
+        GenresResponse genresResponse = ResponseBuilder.buildGenresResponse();
         when(getGenresUseCase.execute(anyString())).thenReturn(genresResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/available-genre-seeds")
                         .header(HttpHeaders.AUTHORIZATION, TestUtils.AUTHORIZATION)

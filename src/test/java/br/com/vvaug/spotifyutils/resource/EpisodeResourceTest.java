@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.resource;
 
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.EpisodeResponse;
 import br.com.vvaug.spotifyutils.response.SeveralEpisodesResponse;
 import br.com.vvaug.spotifyutils.usecase.GetEpisodeUseCase;
@@ -33,8 +34,7 @@ class EpisodeResourceTest {
 
     @Test
     void getEpisodeTest() throws Exception {
-        //TODO object data;
-        EpisodeResponse episodeResponse = EpisodeResponse.builder().build();
+        EpisodeResponse episodeResponse = ResponseBuilder.buildEpisodeResponse();
         when(getEpisodeUseCase.execute(anyString(), anyString())).thenReturn(episodeResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/episodes/512ojhOuo1ktJprKbVcKyQ")
                         .header(HttpHeaders.AUTHORIZATION, TestUtils.AUTHORIZATION)
@@ -44,7 +44,7 @@ class EpisodeResourceTest {
 
     @Test
     void getSeveralEpisodesTest() throws Exception {
-        SeveralEpisodesResponse severalEpisodesResponse = SeveralEpisodesResponse.builder().build();
+        SeveralEpisodesResponse severalEpisodesResponse = ResponseBuilder.buildEpisodeSeveralResponse();
         when(getSeveralEpisodesUseCase.execute(anyString(), anyString())).thenReturn(severalEpisodesResponse);
         mockMvc.perform(MockMvcRequestBuilders.get("/episodes")
                         .queryParam("ids", "512ojhOuo1ktJprKbVcKyQ")
