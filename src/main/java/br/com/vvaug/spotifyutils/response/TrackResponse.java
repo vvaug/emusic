@@ -24,6 +24,15 @@ public class TrackResponse {
     private boolean explicit;
     @JsonAlias("external_ids")
     private ExternalIdsResponse externalIds;
+    private int popularity;
+    @JsonAlias("preview_url")
+    private String previewUrl;
+    @JsonAlias("track_number")
+    private int trackNumber;
+    private String type;
+    private String uri;
+    @JsonAlias("is_local")
+    private boolean isLocal;
     @JsonAlias("external_urls")
     private ExternalUrlsResponse externalUrls;
     private String href;
@@ -34,13 +43,4 @@ public class TrackResponse {
     private LinkedFromResponse linkedFrom;
     private RestrictionsResponse restrictions;
     private String name;
-    private int popularity;
-    @JsonAlias("preview_url")
-    private String previewUrl;
-    @JsonAlias("track_number")
-    private int trackNumber;
-    private String type;
-    private String uri;
-    @JsonAlias("is_local")
-    private boolean isLocal;
 }

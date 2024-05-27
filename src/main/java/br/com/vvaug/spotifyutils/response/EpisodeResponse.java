@@ -12,11 +12,10 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Data
 @Builder
-
 public class EpisodeResponse {
 
 	@JsonAlias("audio_preview_url")
-	private String AudioPreviewUrl;
+	private String audioPreviewUrl;
 	private String description;
 	@JsonAlias("html_description")
 	private String htmlDescription;

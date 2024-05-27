@@ -12,16 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class AlbumItemResponse {
+public class AlbumItemResponse{
 
-    private List<ArtistResponse> artists;
-    @JsonAlias("available_markets")
-    private List<String> availableMarkets;
-    @JsonAlias("disc_number")
-    private int discNumber;
-    @JsonAlias("duration_ms")
-    private int durationMs;
-    private boolean explicit;
     @JsonAlias("external_urls")
     private ExternalUrlsResponse externalUrls;
     private String href;
@@ -32,6 +24,14 @@ public class AlbumItemResponse {
     private LinkedFromResponse linkedFrom;
     private RestrictionsResponse restrictions;
     private String name;
+    private List<ArtistResponse> artists;
+    @JsonAlias("available_markets")
+    private List<String> availableMarkets;
+    @JsonAlias("disc_number")
+    private int discNumber;
+    @JsonAlias("duration_ms")
+    private int durationMs;
+    private boolean explicit;
     @JsonAlias("preview_url")
     private String previewUrl;
     @JsonAlias("track_number")
