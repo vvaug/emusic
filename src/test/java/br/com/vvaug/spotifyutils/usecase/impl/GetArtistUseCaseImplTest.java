@@ -33,7 +33,7 @@ class GetArtistUseCaseImplTest {
         Quando o método getArtist for executado com qualquer String no primeiro parâmetro e qualquer String no segundo parâmetro, devolva o objeto armazenado em expected.
      */
     @Test
-    void execute () throws IOException {
+    public void execute () throws IOException {
         ArtistResponse expected = ResponseBuilder.buildArtistResponse(); //objeto esperado quando o gateway for executado
         when(getArtistGateway.getArtist(anyString(), anyString())).thenReturn(expected); //quando gateway for executado, retorne o objeto criado na linha acima
         ArtistResponse response = getArtistUseCase.execute(ID, AUTHORIZATION); // aqui o UseCase é executado. O fluxo é o UseCase chamar o Gateway. Como Mockamos o Gateway acima para devolver um objeto vazio, o "expected" é ele que será devolvido, pois o Gateway está mockado o when significa (Quando o gateway.metodoX for executado Devolva um Objeto Mockado, no caso o expected)

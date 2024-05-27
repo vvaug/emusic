@@ -1,7 +1,9 @@
-package br.com.vvaug.spotifyutils.usecase.impl;
+package br.com.vvaug.spotifyutils.gateway.impl;
 
-import br.com.vvaug.spotifyutils.gateway.impl.GetEpisodeGatewayImpl;
+import br.com.vvaug.spotifyutils.client.SpotifyCategoriesClient;
+import br.com.vvaug.spotifyutils.client.SpotifyEpisodeClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
+import br.com.vvaug.spotifyutils.response.CategoriesItemResponse;
 import br.com.vvaug.spotifyutils.response.EpisodeResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,24 +14,26 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetEpisodeUseCaseImplTest {
+public class GetEpisodeResponseGatewayImplTest {
 
     @InjectMocks
-    private GetEpisodeUseCaseImpl getEpisodeUseCase;
-
-    @Mock
     private GetEpisodeGatewayImpl getEpisodeGateway;
+    @Mock
+    private SpotifyEpisodeClient spotifyEpisodeClient;
 
     @Test
-    void executeTest(){
+    public void getEpisodeTest() {
         EpisodeResponse expected = ResponseBuilder.buildEpisodeResponse();
-        when(getEpisodeGateway.getEpisode(anyString(), anyString())).thenReturn(expected);
-        EpisodeResponse response = getEpisodeUseCase.execute(ID, AUTHORIZATION);
-        verify(getEpisodeGateway, atLeastOnce()).getEpisode(anyString(), anyString());
+        when(spotifyEpisodeClient.getEpisode(any(), any())).thenReturn(expected);
+        EpisodeResponse response = getEpisodeGateway.getEpisode(ID,AUTHORIZATION);
+        verify(spotifyEpisodeClient, atLeastOnce()).getEpisode(any(),any());
         assertEquals(expected, response);
+
     }
+
+
 }

@@ -1,7 +1,9 @@
-package br.com.vvaug.spotifyutils.usecase.impl;
+package br.com.vvaug.spotifyutils.gateway.impl;
 
-import br.com.vvaug.spotifyutils.gateway.impl.GetSeveralArtistsGatewayImpl;
+import br.com.vvaug.spotifyutils.client.SpotifyAlbumClient;
+import br.com.vvaug.spotifyutils.client.SpotifyArtistClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
+import br.com.vvaug.spotifyutils.response.AlbumTracksResponse;
 import br.com.vvaug.spotifyutils.response.SeveralArtistsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,23 +14,25 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetSeveralArtistsUseCaseImplTest {
+public class GetArtistsSeveralResponseGatewayImplTest {
 
     @InjectMocks
-    private GetSeveralArtistsUseCaseImpl getSeveralArtistsUseCase;
-    @Mock
     private GetSeveralArtistsGatewayImpl getSeveralArtistsGateway;
+    @Mock
+    private SpotifyArtistClient spotifyArtistClient;
 
     @Test
-    void executeTest(){
+    public void getArtistsTest() {
         SeveralArtistsResponse expected = ResponseBuilder.buildArtistsResponse();
-        when(getSeveralArtistsGateway.getArtists(anyString(), anyString())).thenReturn(expected);
-        SeveralArtistsResponse response = getSeveralArtistsUseCase.execute(ID, AUTHORIZATION);
-        verify(getSeveralArtistsGateway, atLeastOnce()).getArtists(anyString(), anyString());
+        when(spotifyArtistClient.getArtists(any(), any())).thenReturn(expected);
+        SeveralArtistsResponse response = getSeveralArtistsGateway.getArtists(ID, AUTHORIZATION);
+        verify(spotifyArtistClient, atLeastOnce()).getArtists(any(), any());
         assertEquals(expected, response);
+
     }
+
 }

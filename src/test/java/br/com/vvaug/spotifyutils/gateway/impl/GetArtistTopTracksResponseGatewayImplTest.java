@@ -1,7 +1,8 @@
-package br.com.vvaug.spotifyutils.usecase.impl;
+package br.com.vvaug.spotifyutils.gateway.impl;
 
-import br.com.vvaug.spotifyutils.gateway.impl.GetArtistTopTracksGatewayImpl;
+import br.com.vvaug.spotifyutils.client.SpotifyArtistClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
+import br.com.vvaug.spotifyutils.response.ArtistAlbumResponse;
 import br.com.vvaug.spotifyutils.response.ArtistTopTracksResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,23 +13,25 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetArtistTopTracksUseCaseImplTest {
+public class GetArtistTopTracksResponseGatewayImplTest {
 
     @InjectMocks
-    private GetArtistTopTracksUseCaseImpl getArtistTopTracksUseCase;
-    @Mock
     private GetArtistTopTracksGatewayImpl getArtistTopTracksGateway;
+    @Mock
+    private SpotifyArtistClient spotifyArtistClient;
 
     @Test
-    void executeTest(){
+    public void getArtistTopTracksTest() {
         ArtistTopTracksResponse expected = ResponseBuilder.buildArtistsTopTracksResponse();
-        when(getArtistTopTracksGateway.getArtistTopTracks(anyString(), anyString())).thenReturn(expected);
-        ArtistTopTracksResponse response = getArtistTopTracksUseCase.execute(ID, AUTHORIZATION);
-        verify(getArtistTopTracksGateway, atLeastOnce()).getArtistTopTracks(anyString(), anyString());
+        when(spotifyArtistClient.getArtistTopTracks(any(), any())).thenReturn(expected);
+        ArtistTopTracksResponse response = getArtistTopTracksGateway.getArtistTopTracks(ID, AUTHORIZATION);
+        verify(spotifyArtistClient, atLeastOnce()).getArtistTopTracks(any(), any());
         assertEquals(expected, response);
+
     }
+
 }
