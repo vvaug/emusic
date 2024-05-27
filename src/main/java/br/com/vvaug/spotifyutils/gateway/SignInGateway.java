@@ -4,5 +4,5 @@ import br.com.vvaug.spotifyutils.response.SignInResponse;
 
 public interface SignInGateway {
 
-    SignInResponse execute(String secretId, String clientId, String grant_type);
+    SignInResponse execute(String secretId, String clientId, String grantType);
 }
