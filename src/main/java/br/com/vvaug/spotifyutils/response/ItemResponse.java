@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.response;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,18 +13,25 @@ import java.util.ArrayList;
 @Data
 @Builder
 public class ItemResponse {
-    private String album_group;
-    private String album_type;
+    @JsonAlias("album_group")
+    private String albumGroup;
+    @JsonAlias("album_type")
+    private String albumType;
     private ArrayList<ArtistResponse> artists;
-    private ArrayList<String> available_markets;
-    private ExternalUrlsResponse external_urls;
+    @JsonAlias("available_markets")
+    private ArrayList<String> availableMarkets;
+    @JsonAlias("external_urls")
+    private ExternalUrlsResponse externalUrls;
     private String href;
     private String id;
     private ArrayList<ImageResponse> images;
     private String name;
-    private String release_date;
-    private String release_date_precision;
-    private int total_tracks;
+    @JsonAlias("release_date")
+    private String releaseDate;
+    @JsonAlias("release_date_precision")
+    private String releaseDatePrecision;
+    @JsonAlias("total_tracks")
+    private int totalTracks;
     private String type;
     private String uri;
 

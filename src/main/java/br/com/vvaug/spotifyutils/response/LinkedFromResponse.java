@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.response;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +12,8 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class LinkedFromResponse {
 
-    private ExternalUrlsResponse external_urls;
+    @JsonAlias("external_urls")
+    private ExternalUrlsResponse externalUrls;
     private String href;
     private String id;
     private String type;

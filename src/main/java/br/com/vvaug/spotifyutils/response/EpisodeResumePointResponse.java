@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.response;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,10 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class EpisodeResumePointResponse {
-	
-    private boolean fully_played;
-    private int resume_position_ms;
+
+    @JsonAlias("fully_played")
+    private boolean fullyPlayed;
+    @JsonAlias("resume_position_ms")
+    private int resumePositionMs;
 
 }

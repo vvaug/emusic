@@ -1,5 +1,6 @@
 package br.com.vvaug.spotifyutils.response;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,20 +15,29 @@ import java.util.List;
 public class AlbumItemResponse {
 
     private List<ArtistResponse> artists;
-    private List<String> available_markets;
-    private int disc_number;
-    private int duration_ms;
+    @JsonAlias("available_markets")
+    private List<String> availableMarkets;
+    @JsonAlias("disc_number")
+    private int discNumber;
+    @JsonAlias("duration_ms")
+    private int durationMs;
     private boolean explicit;
-    private ExternalUrlsResponse external_urls;
+    @JsonAlias("external_urls")
+    private ExternalUrlsResponse externalUrls;
     private String href;
     private String id;
-    private boolean is_playable;
-    private LinkedFromResponse linked_from;
+    @JsonAlias("is_playable")
+    private boolean isPlayable;
+    @JsonAlias("linked_from")
+    private LinkedFromResponse linkedFrom;
     private RestrictionsResponse restrictions;
     private String name;
-    private String preview_url;
-    private int track_number;
+    @JsonAlias("preview_url")
+    private String previewUrl;
+    @JsonAlias("track_number")
+    private int trackNumber;
     private String type;
     private String uri;
-    private boolean is_local;
+    @JsonAlias("is_local")
+    private boolean isLocal;
 }
