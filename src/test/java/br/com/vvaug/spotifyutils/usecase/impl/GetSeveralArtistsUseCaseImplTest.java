@@ -9,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.IOException;
-
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,8 +24,7 @@ class GetSeveralArtistsUseCaseImplTest {
     private GetSeveralArtistsGatewayImpl getSeveralArtistsGateway;
 
     @Test
-    void executeTest() throws IOException {
-        //TODO object data
+    void executeTest(){
         SeveralArtistsResponse expected = ResponseBuilder.buildArtistsResponse();
         when(getSeveralArtistsGateway.getArtists(anyString(), anyString())).thenReturn(expected);
         SeveralArtistsResponse response = getSeveralArtistsUseCase.execute(ID, AUTHORIZATION);

@@ -9,8 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.IOException;
-
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -25,7 +23,7 @@ class GetGenresUseCaseImplTest {
     private GetGenresGatewayImpl getGenresGateway;
 
     @Test
-    void executeTest() throws IOException {
+    void executeTest(){
         GenresResponse expected = ResponseBuilder.buildGenresResponse();
         when(getGenresGateway.getGenres(anyString())).thenReturn(expected);
         GenresResponse response = getGenresUseCase.execute(AUTHORIZATION);
