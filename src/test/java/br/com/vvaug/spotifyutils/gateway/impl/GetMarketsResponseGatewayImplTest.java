@@ -1,15 +1,15 @@
 package br.com.vvaug.spotifyutils.gateway.impl;
 
 import br.com.vvaug.spotifyutils.client.SpotifyAlbumClient;
+import br.com.vvaug.spotifyutils.client.SpotifyMarketsClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
-import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.MarketsResponse;
+import br.com.vvaug.spotifyutils.response.SeveralAlbumsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.io.IOException;
 
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
@@ -18,19 +18,22 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetAlbumGatewayImplTest {
+public class GetMarketsResponseGatewayImplTest {
 
     @InjectMocks
-    private GetAlbumGatewayImpl getAlbumGateway;
+    private GetMarketsGatewayImpl getMarketsGateway;
     @Mock
-    private SpotifyAlbumClient spotifyAlbumClient;
+    private SpotifyMarketsClient spotifyMarketsClient;
 
     @Test
-    public void getAlbumTest() {
-        AlbumResponse expected = ResponseBuilder.buildAlbumResponse();
-        when(spotifyAlbumClient.getAlbum(any(), any())).thenReturn(expected);
-        AlbumResponse response = getAlbumGateway.getAlbum(ID, AUTHORIZATION);
-        verify(spotifyAlbumClient, atLeastOnce()).getAlbum(any(), any());
+    public void getMarketsTest() {
+        MarketsResponse expected = ResponseBuilder.buildMarketsResponse();
+        when(spotifyMarketsClient.getMarkets(any())).thenReturn(expected);
+        MarketsResponse response = getMarketsGateway.getMarkets(AUTHORIZATION);
+        verify(spotifyMarketsClient, atLeastOnce()).getMarkets(any());
         assertEquals(expected, response);
     }
+
+
+
 }

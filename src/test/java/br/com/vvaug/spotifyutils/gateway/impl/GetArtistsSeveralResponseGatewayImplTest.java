@@ -1,15 +1,15 @@
 package br.com.vvaug.spotifyutils.gateway.impl;
 
 import br.com.vvaug.spotifyutils.client.SpotifyAlbumClient;
+import br.com.vvaug.spotifyutils.client.SpotifyArtistClient;
 import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
-import br.com.vvaug.spotifyutils.response.AlbumResponse;
+import br.com.vvaug.spotifyutils.response.AlbumTracksResponse;
+import br.com.vvaug.spotifyutils.response.SeveralArtistsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.io.IOException;
 
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
@@ -18,19 +18,21 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
-class GetAlbumGatewayImplTest {
+public class GetArtistsSeveralResponseGatewayImplTest {
 
     @InjectMocks
-    private GetAlbumGatewayImpl getAlbumGateway;
+    private GetSeveralArtistsGatewayImpl getSeveralArtistsGateway;
     @Mock
-    private SpotifyAlbumClient spotifyAlbumClient;
+    private SpotifyArtistClient spotifyArtistClient;
 
     @Test
-    public void getAlbumTest() {
-        AlbumResponse expected = ResponseBuilder.buildAlbumResponse();
-        when(spotifyAlbumClient.getAlbum(any(), any())).thenReturn(expected);
-        AlbumResponse response = getAlbumGateway.getAlbum(ID, AUTHORIZATION);
-        verify(spotifyAlbumClient, atLeastOnce()).getAlbum(any(), any());
+    public void getArtistsTest() {
+        SeveralArtistsResponse expected = ResponseBuilder.buildArtistsResponse();
+        when(spotifyArtistClient.getArtists(any(), any())).thenReturn(expected);
+        SeveralArtistsResponse response = getSeveralArtistsGateway.getArtists(ID, AUTHORIZATION);
+        verify(spotifyArtistClient, atLeastOnce()).getArtists(any(), any());
         assertEquals(expected, response);
+
     }
+
 }
