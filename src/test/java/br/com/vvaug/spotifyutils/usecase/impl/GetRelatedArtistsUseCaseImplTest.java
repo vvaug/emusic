@@ -1,12 +1,15 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
 import br.com.vvaug.spotifyutils.gateway.impl.GetRelatedArtistsGatewayImpl;
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.RelatedArtistsResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.io.IOException;
 
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
@@ -23,9 +26,8 @@ class GetRelatedArtistsUseCaseImplTest {
     private GetRelatedArtistsGatewayImpl getRelatedArtistsGateway;
 
     @Test
-    void executeTest() {
-        //TODO object data
-        RelatedArtistsResponse expected = RelatedArtistsResponse.builder().build();
+    void executeTest() throws IOException {
+        RelatedArtistsResponse expected = ResponseBuilder.buildArtistsRelated();
         when(getRelatedArtistsGateway.getRelatedArtists(anyString(), anyString())).thenReturn(expected);
         RelatedArtistsResponse response = getRelatedArtistsUseCase.execute(ID, AUTHORIZATION);
         verify(getRelatedArtistsGateway, atLeastOnce()).getRelatedArtists(anyString(), anyString());

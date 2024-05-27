@@ -1,12 +1,15 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
 import br.com.vvaug.spotifyutils.gateway.impl.GetAlbumGatewayImpl;
+import br.com.vvaug.spotifyutils.mock.ResponseBuilder;
 import br.com.vvaug.spotifyutils.response.AlbumResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.io.IOException;
 
 import static br.com.vvaug.spotifyutils.utils.TestUtils.AUTHORIZATION;
 import static br.com.vvaug.spotifyutils.utils.TestUtils.ID;
@@ -24,9 +27,8 @@ class GetAlbumUseCaseImplTest {
     private GetAlbumGatewayImpl getAlbumGateway;
 
     @Test
-    void executeTest() {
-        //TODO object data
-        AlbumResponse expected = AlbumResponse.builder().build();
+    void executeTest() throws IOException {
+        AlbumResponse expected = ResponseBuilder.buildAlbumResponse();
         when(getAlbumGateway.getAlbum(anyString(), anyString())).thenReturn(expected);
         AlbumResponse response = getAlbumUseCase.execute(ID, AUTHORIZATION);
         verify(getAlbumGateway, atLeastOnce()).getAlbum(anyString(), anyString());
