@@ -6,7 +6,6 @@ import br.com.vvaug.spotifyutils.response.SeveralCategoriesResponse;
 import br.com.vvaug.spotifyutils.usecase.GetSeveralCategoriesUseCase;
 import br.com.vvaug.spotifyutils.usecase.GetSingleCategoryUseCase;
 import br.com.vvaug.spotifyutils.utils.TestUtils;
-import jakarta.ws.rs.core.Response;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
