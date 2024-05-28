@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmusicuserdsApplication {
+public class EmusicUserDsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmusicuserdsApplication.class, args);
+		SpringApplication.run(EmusicUserDsApplication.class, args);
 	}
 
 }
