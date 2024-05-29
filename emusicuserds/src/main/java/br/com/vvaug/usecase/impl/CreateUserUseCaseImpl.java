@@ -1,5 +1,6 @@
 package br.com.vvaug.usecase.impl;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import br.com.vvaug.entity.User;
 import br.com.vvaug.gateway.CreateUserGateway;
 import br.com.vvaug.mapper.CreateUserRequestToUserMapper;
@@ -25,6 +26,8 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     @Override
     public ResponseEntity<UserResponse> execute(CreateUserRequest createUserRequest) {
         User user = CreateUserRequestToUserMapper.map(createUserRequest);
+        String userPasswordEncoded = BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
+        user.setPassword(userPasswordEncoded);
         setProperties(user);
         createUserGateway.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED)

@@ -60,7 +60,11 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.17.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>at.favre.lib</groupId>
+			<artifactId>bcrypt</artifactId>
+			<version>0.10.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
