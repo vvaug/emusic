@@ -1,6 +1,7 @@
 package br.com.vvaug.usecase.impl;
 
 import br.com.vvaug.entity.User;
+import br.com.vvaug.exception.ApplicationException;
 import br.com.vvaug.gateway.GetUserDataGateway;
 import br.com.vvaug.mapper.UserToUserResponseMapper;
 import br.com.vvaug.request.GetUserDataRequest;
@@ -8,12 +9,14 @@ import br.com.vvaug.response.UserResponse;
 import br.com.vvaug.usecase.GetUserDataUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Base64;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +27,9 @@ public class GetUserDataUseCaseImpl implements GetUserDataUseCase {
 
     @Override
     public ResponseEntity<UserResponse> execute(GetUserDataRequest request)  {
-        byte[] payloadByte = Base64.getDecoder().decode(request.getUserAuthenticationInfoBase64());
+
+        String payload = request.getUserAuthenticationInfoBase64();
+        byte[] payloadByte = Base64.decodeBase64(payload);
         String payloadStr;
         try {
             payloadStr = new String(payloadByte, "UTF8");
@@ -34,8 +39,11 @@ public class GetUserDataUseCaseImpl implements GetUserDataUseCase {
         }
         String[] userData = payloadStr.split(",");
 
+        if(userData.length == 1) {
+            throw new ApplicationException(HttpStatus.FORBIDDEN, "Bad Credentials.");
+        }
         User user = getUserDataGateway.getUserData(userData[0], userData[1]);
-
         return ResponseEntity.ok(UserToUserResponseMapper.map(user));
     }
+
 }

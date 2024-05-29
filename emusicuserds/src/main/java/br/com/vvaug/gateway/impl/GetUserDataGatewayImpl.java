@@ -16,10 +16,7 @@ public class GetUserDataGatewayImpl implements GetUserDataGateway {
 
     @Override
     public User getUserData(String username, String password){
-        var user =  userRepository.findUserByUsernameAndPassword(username, password);
-        if (user.isEmpty()){
-            throw new ApplicationException(HttpStatus.FORBIDDEN, "Can't find User. Check credentials");
-        }
-        return user.get();
+        return userRepository.findUserByUsernameAndPassword(username, password)
+                .orElseThrow(() -> new ApplicationException(HttpStatus.FORBIDDEN, "Can't find User. Check credentials"));
     }
 }
