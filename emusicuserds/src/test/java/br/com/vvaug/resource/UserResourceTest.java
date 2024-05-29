@@ -5,6 +5,7 @@ import br.com.vvaug.mapper.UserToUserResponseMapper;
 import br.com.vvaug.request.CreateUserRequest;
 import br.com.vvaug.request.GetUserDataRequest;
 import br.com.vvaug.response.UserResponse;
+import br.com.vvaug.usecase.GetUserByUsernameUseCase;
 import br.com.vvaug.usecase.impl.CreateUserUseCaseImpl;
 import br.com.vvaug.usecase.impl.GetUserDataUseCaseImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,6 +38,9 @@ class UserResourceTest {
     private GetUserDataUseCaseImpl getUserDataUseCase;
     @MockBean
     private CreateUserUseCaseImpl createUserUseCase;
+    @MockBean
+    private GetUserByUsernameUseCase getUserByUsernameUseCase;
+
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
@@ -53,6 +57,16 @@ class UserResourceTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .content(body))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+    }
+
+    @Test
+    void getUserByUsername() throws Exception {
+        UserResponse userResponse = UserResponse.builder().build();
+        when(getUserByUsernameUseCase.execute(any())).thenReturn(userResponse);
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/root")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is(200));
     }
 
