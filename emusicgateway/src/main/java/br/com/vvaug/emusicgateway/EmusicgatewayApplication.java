@@ -1,7 +1,9 @@
 package br.com.vvaug.emusicgateway;
 
+import br.com.vvaug.emusicgateway.config.RouteConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class EmusicgatewayApplication {
@@ -10,4 +12,8 @@ public class EmusicgatewayApplication {
 		SpringApplication.run(EmusicgatewayApplication.class, args);
 	}
 
+	@Bean
+	public RouteConfiguration routeConfiguration(){
+		return new RouteConfiguration();
+	}
 }
