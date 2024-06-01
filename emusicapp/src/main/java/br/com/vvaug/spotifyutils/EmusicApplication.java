@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-public class SpotifyUtilsApplication {
+public class EmusicApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpotifyUtilsApplication.class, args);
+		SpringApplication.run(EmusicApplication.class, args);
 	}
 
 }

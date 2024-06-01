@@ -1,6 +1,5 @@
 package br.com.vvaug.spotifyutils.usecase.impl;
 
-import br.com.vvaug.spotifyutils.gateway.impl.SignInGatewayImpl;
 import br.com.vvaug.spotifyutils.response.SignInResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
