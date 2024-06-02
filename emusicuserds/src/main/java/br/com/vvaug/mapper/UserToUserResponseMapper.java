@@ -9,6 +9,8 @@ public class UserToUserResponseMapper {
 
     public static UserResponse map (User user){
         return UserResponse.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
                 .active(user.isActive())
                 .createdDate(user.getCreatedDate())
                 .documentNumber(user.getDocumentNumber())

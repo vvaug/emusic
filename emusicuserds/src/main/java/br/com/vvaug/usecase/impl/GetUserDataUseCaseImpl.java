@@ -25,6 +25,9 @@ public class GetUserDataUseCaseImpl implements GetUserDataUseCase {
 
     @Override
     public ResponseEntity<UserResponse> execute(GetUserDataRequest request)  {
+        /*
+            TODO password will be stored in bCrypt.
+         */
         String payload = request.getUserAuthenticationInfoBase64();
         byte[] payloadByte = Base64.decodeBase64(payload);
         String payloadStr;
