@@ -17,7 +17,8 @@ public class RouteConfiguration {
     private String emusicUserDsPath;
     @Value("${route.emusicapp.path}")
     private String emusicAppPath;
-
+    @Value("${route.emusicregister.path}")
+    private String emusicRegisterPath;
     @Autowired
     private AuthenticationFilter authenticationFilter;
 
@@ -34,6 +35,9 @@ public class RouteConfiguration {
                 .route("emusicapp", r -> r.path("/emusicapp/v1/**")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri(emusicAppPath))
+                .route("emusicregister", r -> r.path("/emusicregister/v1/**")
+                        .filters(f -> f.filter(authenticationFilter))
+                        .uri(emusicRegisterPath))
                 .build();
         }
 }
