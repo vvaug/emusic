@@ -17,4 +17,14 @@ public class CreateUserRequest {
     private String lastName;
     private String documentNumber;
 
+    @Override
+    public String toString() {
+        return "CreateUserRequest{" +
+                "username='" + username + '\'' +
+                ", password='" + "*******" + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", documentNumber='" + documentNumber + '\'' +
+                '}';
+    }
 }
