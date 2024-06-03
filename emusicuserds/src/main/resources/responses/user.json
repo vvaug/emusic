@@ -1,0 +1,13 @@
+{
+  "id": "665780c26df6fc3377d2fc3d",
+  "username": "root",
+  "password": "$2a$12$BLLkXNT4Q77qwyW7LA9Qeuqcl13S8bXmYmbjFYslizu1eILN0XrjO",
+  "firstName": "Admin User",
+  "lastName": "Admin",
+  "documentNumber": "XXXXXXXX",
+  "premium": false,
+  "createdDate": "2024-05-29",
+  "quantityFollowers": 0,
+  "quantityFollowing": 0,
+  "active": false
+}

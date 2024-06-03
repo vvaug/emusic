@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class GetUserGatewayImpl implements GetUserGateway {
+class GetUserGatewayImpl implements GetUserGateway {
     private final EmusicUserDsClient emusicUserDsClient;
     @Override
     public UserDetails getUser(String username) {
