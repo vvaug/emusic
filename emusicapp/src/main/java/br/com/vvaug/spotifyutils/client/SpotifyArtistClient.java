@@ -24,5 +24,7 @@ public interface SpotifyArtistClient {
     ArtistTopTracksResponse getArtistTopTracks(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 
     @GetMapping("/{id}/related-artists")
-    RelatedArtistsResponse getRelatedArtists(@PathVariable("id") String id, @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
+    RelatedArtistsResponse getRelatedArtists(
+            @PathVariable("id") String id,
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String authorization);
 }
